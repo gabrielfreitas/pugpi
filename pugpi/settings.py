@@ -1,0 +1,123 @@
+# -*- coding: utf-8 -*-
+
+import os
+
+PROJECT_DIR = os.path.join(os.path.dirname(__file__), '..')
+location = lambda x: os.path.join(PROJECT_DIR, x)
+
+DEBUG = True
+TEMPLATE_DEBUG = DEBUG
+
+ADMINS = (
+    ('Gabriel Freitas', 'gabrielfreitas@gmail.com'),
+    ('Gustavo Carvalho', 'gt.salles@gmail.com')
+)
+
+MANAGERS = ADMINS
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'pugpi',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
+    }
+}
+
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '0.0.0.0']
+
+TIME_ZONE = 'America/Fortaleza'
+
+LANGUAGE_CODE = 'pt-br'
+
+SITE_ID = 1
+
+USE_I18N = True
+
+USE_L10N = True
+
+USE_TZ = True
+
+MEDIA_ROOT = ''
+
+MEDIA_URL = '/media/'
+
+STATIC_ROOT = ''
+
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    location('static/'),
+)
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # 'django.contrib.staticfiles.finders.DefaultStorageFinder',
+)
+
+SECRET_KEY = 'ahc1u5ri5320s)f2yjotia4!^x$cwnl1)6m3a(p9=!twtor#tj'
+
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+    # 'django.template.loaders.eggs.Loader',
+)
+
+MIDDLEWARE_CLASSES = (
+    'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
+
+ROOT_URLCONF = 'pugpi.urls'
+
+WSGI_APPLICATION = 'pugpi.wsgi.application'
+
+TEMPLATE_DIRS = (
+    location('templates/'),
+)
+
+INSTALLED_APPS = (
+    'annoying',
+    'south',
+    'suit',
+    'template_debug',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django.contrib.admin',
+    'apps.core'
+)
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    }
+}
