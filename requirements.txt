@@ -1,5 +1,0 @@
-Django==1.5.1
-South==0.8.1
-django-annoying==0.7.7
-django-suit==0.2.2
-django-template-debug==0.3.3
