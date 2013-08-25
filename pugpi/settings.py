@@ -40,16 +40,16 @@ USE_L10N = True
 
 USE_TZ = True
 
-MEDIA_ROOT = ''
+MEDIA_ROOT = location('media')
 
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = ''
+STATIC_ROOT = location('static')
 
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    location('static/'),
+    location('media/static'),
 )
 
 STATICFILES_FINDERS = (
@@ -80,14 +80,12 @@ ROOT_URLCONF = 'pugpi.urls'
 WSGI_APPLICATION = 'pugpi.wsgi.application'
 
 TEMPLATE_DIRS = (
-    location('templates/'),
+    location('templates'),
 )
 
 INSTALLED_APPS = (
-    'annoying',
     'south',
     'suit',
-    'template_debug',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
