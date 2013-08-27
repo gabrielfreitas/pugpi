@@ -81,7 +81,6 @@ WSGI_APPLICATION = 'pugpi.wsgi.application'
 
 TEMPLATE_DIRS = (
     location('templates'),
-    os.path.join(PROJECT_DIR, 'templates')
 )
 
 INSTALLED_APPS = (
