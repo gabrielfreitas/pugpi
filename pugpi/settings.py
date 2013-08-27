@@ -81,11 +81,14 @@ WSGI_APPLICATION = 'pugpi.wsgi.application'
 
 TEMPLATE_DIRS = (
     location('templates'),
+    os.path.join(PROJECT_DIR, 'templates')
 )
 
 INSTALLED_APPS = (
     'south',
     'suit',
+    'taggit',
+    'ckeditor',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -93,7 +96,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
-    'apps.core'
+    'apps.core',
+    'apps.news',
 )
 
 LOGGING = {
@@ -118,4 +122,30 @@ LOGGING = {
             'propagate': True,
         },
     }
+}
+
+#CKEditor
+CKEDITOR_UPLOAD_PATH = location('media/uploads')
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': [
+            {'name': 'editing', 'items': ['Find', 'Replace', '-', 'SelectAll', '-', 'SpellChecker', 'Scayt']},
+            {'name': 'clipboard',  'items': ['PasteText', '-', 'Undo', 'Redo' ]},
+            {'name': 'links', 'items': ['Link', 'Unlink']},
+            {'name': 'insert', 'items': ['Image', 'Table', 'HorizontalRule', 'SpecialChar', 'PageBreak', 'Iframe']},
+            {'name': 'tools', 'items': ['Maximize', 'ShowBlocks']},
+            '/',
+            {'name': 'basicstyles', 'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-',
+                                              'RemoveFormat']},
+            {'name': 'paragraph', 'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote',
+                                            'CreateDiv',
+            '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl']},
+            '/',
+            {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
+            {'name': 'colors', 'items': ['TextColor', 'BGColor']},
+        ],
+        'height': 300,
+        'width': 710,
+    },
 }
