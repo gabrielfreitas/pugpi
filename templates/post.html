@@ -1,0 +1,18 @@
+{% extends 'elements/base.html' %}
+
+{% block title %}
+    {{ post.title }} - {{ post.category }}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div>
+            <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
+            <h2>{{ post.subtitle }}</h2>
+            <p>{{ post.category }}</p>
+            <p>Por {{ post.author }} em {{ post.updated_at }}</p>
+            <img src="{{ MEDIA_URL }}{{ post.image }}" alt="{{ post.title }}"/>
+            {{ post.text|safe }}
+        </div>
+    </div>
+{% endblock %}

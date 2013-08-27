@@ -1,7 +1,43 @@
 {% extends 'elements/base.html' %}
 
 {% block content %}
-<div class="container">
-    <p>PUG-PI</p>
-</div>
+    <div class="container">
+        <div>
+            {% for post in posts.object_list %}
+                <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
+                <h2>{{ post.subtitle }}</h2>
+                <p>{{ post.category }}</p>
+                <p>Por {{ post.author }} em {{ post.updated_at }}</p>
+                <img src="{{ MEDIA_URL }}{{ post.image }}" alt="{{ post.title }}"/>
+                <div>
+                    {{ post.text|safe|truncatechars:200 }}
+                </div>
+                <a href="{{ post.url }}">Leia mais...</a>
+            {% endfor %}
+        </div>
+
+        <div>
+            <ul class="pagination">
+                {% if posts.has_previous %}
+                    <li><a href="?page={{ posts.previous_page_number }}&q={{ q }}">Anterior</a></li>
+                {% endif %}
+
+                {% for num in posts.paginator.page_range %}
+                    {% ifequal num posts.number %}
+                        <li class="current">
+                            <a href="?page={{ num }}&q={{ q }}">{{ num }}</a>
+                        </li>
+                    {% else %}
+                        <li class="">
+                            <a href="?page={{ num }}&q={{ q }}">{{ num }}</a>
+                        </li>
+                    {% endifequal %}
+                {% endfor %}
+
+                {% if posts.has_next %}
+                    <li><a href="?page={{ posts.next_page_number }}&q={{ q }}">Proximo</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
 {% endblock %}
