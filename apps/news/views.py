@@ -18,11 +18,11 @@ def index(request):
     except(EmptyPage, InvalidPage):
         posts = paginator.page(paginator.num_pages)
     to_return = {'posts': posts}
-    return render(request, 'index.html', to_return)
+    return render(request, 'news/index.html', to_return)
 
 
 def post(request, category, slug, post_id):
     post = get_object_or_404(Post, category__slug=category, slug=slug, id=post_id)
     related = Post.objects.filter(category__slug=category).exclude(id=post.id).order_by('-published_at')[:3]
     to_return = {'post': post, 'related': related}
-    return render(request, 'post.html', to_return)
+    return render(request, 'news/post.html', to_return)
