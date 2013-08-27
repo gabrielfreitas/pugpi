@@ -1,13 +1,18 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-admin.autodiscover()
-
+from django.http import HttpResponse
 from pugpi import settings
 
+admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', 'apps.core.views.index'),
+    url(r'^$', 'apps.news.views.index'),
+    (r'^(?P<category>[\w_-]+)/(?P<slug>[\w_-]+)-(?P<post_id>\d+).html', 'apps.news.views.post'),
+
     url(r'^admin/', include(admin.site.urls)),
+
+    (r'^ckeditor/', include('ckeditor.urls')),
+    (r'^robots\.txt$', lambda r: HttpResponse("User-agent: *\nAllow: /", mimetype="text/plain")),
 )
 
 urlpatterns += patterns('',
