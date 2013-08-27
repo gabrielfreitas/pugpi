@@ -1,0 +1,18 @@
+{% extends 'elements/base.html' %}
+
+{% block title %}
+    Eventos
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% for event in events %}
+        <div>
+            <h1><a href="{{ event.get_absolute_url }}">{{ event.name }}</a></h1>
+            <p>{{ event.time }}</p>
+            <p>{{ event.description }}</p>
+            <img src="{{ MEDIA_URL }}{{ event.image }}" alt="{{ event.name }}"/>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

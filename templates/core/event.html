@@ -1,0 +1,15 @@
+{% extends 'elements/base.html' %}
+
+{% block title %}
+    {{ event.name }}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>{{ event.name }}</h1>
+        <p>{{ event.time }}</p>
+        <p>{{ event.description }}</p>
+        <img src="{{ MEDIA_URL }}{{ event.image }}" alt="{{ event.name }}"/>
+        {{ event.full_description|safe }}
+    </div>
+{% endblock %}

@@ -8,6 +8,8 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^$', 'apps.news.views.index'),
     (r'^(?P<category>[\w_-]+)/(?P<slug>[\w_-]+)-(?P<post_id>\d+).html', 'apps.news.views.post'),
+    (r'^eventos/(?P<slug>[\w_-]+).html', 'apps.core.views.event'),
+    (r'^eventos/$', 'apps.core.views.events'),
 
     url(r'^admin/', include(admin.site.urls)),
 
