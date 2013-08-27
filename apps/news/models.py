@@ -23,7 +23,7 @@ class Post(models.Model):
     def __unicode__(self):
         return self.title
 
-    def url(self):
+    def get_absolute_url(self):
         return u'/%s/%s-%i.html' % (self.category.slug, self.slug, self.id)
 
     class Meta:
@@ -37,7 +37,7 @@ class Category(models.Model):
     def __unicode__(self):
         return self.name
 
-    def url(self):
+    def get_absolute_url(self):
         return u'/%s.html' % self.slug
 
     class Meta:
