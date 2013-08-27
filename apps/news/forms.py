@@ -2,7 +2,7 @@
 
 from django import forms
 from ckeditor.widgets import CKEditorWidget
-from apps.news.models import Post
+from .models import Post
 
 
 class PostForm(forms.ModelForm):

@@ -1,6 +1,6 @@
 from django.contrib import admin
-from apps.core.models import Event
-from apps.core.forms import EventForm
+from .models import Event
+from .forms import EventForm
 
 
 class EventAdmin(admin.ModelAdmin):

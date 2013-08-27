@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from django.contrib import admin
-from apps.news.models import Post, Category
-from apps.news.forms import PostForm
+from .models import Post, Category
+from .forms import PostForm
 
 
 class PostAdmin(admin.ModelAdmin):

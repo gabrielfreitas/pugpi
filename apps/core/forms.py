@@ -1,6 +1,6 @@
 from django import forms
 from ckeditor.widgets import CKEditorWidget
-from apps.core.models import Event
+from .models import Event
 
 
 class EventForm(forms.ModelForm):

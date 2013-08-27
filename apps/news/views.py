@@ -3,7 +3,7 @@
 from django.core.paginator import Paginator, EmptyPage, InvalidPage
 from django.shortcuts import get_object_or_404, render
 from datetime import datetime
-from apps.news.models import Post
+from .models import Post
 
 
 def index(request):
